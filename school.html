@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Information</h1>
+        <input type="text" id="nameInput" placeholder="Enter your name">
+        <input type="number" id="ageInput" placeholder="Enter your age">
+        <input type="text" id="subjectsInput" placeholder="Enter subjects (comma separated)">
+        <button onclick="processInfo()">Submit</button>
+
+        <div class="result">
+            <p>Student Name: <span id="studentName"></span></p>
+            <p>Is Enrolled in Math: <span id="mathEnrollment"></span></p>
+            <p>Subjects: <span id="subjectsList"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function processInfo() {
+            const name = document.getElementById("nameInput").value.trim();
+            const age = parseInt(document.getElementById("ageInput").value.trim());
+            const subjects = document.getElementById("subjectsInput").value.trim().split(",").map(subject => subject.trim());
+
+            const nameResult = age >= 18 ? name : false;
+            document.getElementById("studentName").textContent = nameResult;
+
+            const isEnrolledInMath = subjects.includes("Math");
+            document.getElementById("mathEnrollment").textContent = isEnrolledInMath;
+            
+            const subjectsString = subjects.join(", ");
+            document.getElementById("subjectsList").textContent = subjectsString;
+        }
+    </script>
+</body>
+</html>
